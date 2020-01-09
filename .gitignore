@@ -1,3 +1,6 @@
+_venv
+# Added By Bo Wang
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
