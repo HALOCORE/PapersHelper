@@ -14,5 +14,3 @@ def pdf_gettext(filename):
         for page in PDFPage.get_pages(fp):
             interpreter.process_page(page)
     device.close()
-
-pdf_gettext("/mnt/c/_MySoftwares/test.pdf")

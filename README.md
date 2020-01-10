@@ -10,13 +10,13 @@ Help with my downloaded papers in a directory.
     - /\<filename\>
         - /summary
             - get 获取指定文件的summary（不存在则创建）
+            - /check
+                - get 检查summary完整性
         - /refs
             - get 获取指定文件的全部ref（不存在则创建）
             - /link
                 - get 对所有未匹配ref寻找匹配的文件
                 - post 上传匹配信息，更新ref
-        - /check
-            - get 检查summary完整性
         - /fulltxt
             - get 获取完整文本
     - /cachefulltxt
@@ -34,7 +34,6 @@ Help with my downloaded papers in a directory.
     - get 获取系统配置
     - post 设置系统配置
 - /test
-    - /pdf2txt 
-        - get 获取指定文件的全文
+    - get 测试代码
 
 

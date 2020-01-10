@@ -1,29 +1,23 @@
 from django.http import HttpRequest, HttpResponse
-from .respgen import JsonResponse, JsonResponseNotSupported, JsonResponseOK
-from . import conf
+from .respgen import handler_gen
+from . import config
+from . import util
+from . import test
 import os
 
-def api_conf(request:HttpRequest):
-    if request.method == 'GET':
-        d = dir(conf)
-        return JsonResponse(d)
-    else:
-        return JsonResponseNotSupported()
-    
 
-def api_files(request:HttpRequest):
-    if request.method == 'GET':
-        fds = os.listdir(conf.ROOT_PATH)
-        fullfds = [os.path.join(conf.ROOT_PATH, f) for f in fds]
-        files = [f for f in fullfds if os.path.isfile(f)]
-        dirs = [f for f in fullfds if os.path.isdir(f)]
-        return JsonResponse({"files": files, "dirs": dirs})
-    else:
-        return JsonResponseNotSupported()
+api_test = handler_gen(test.test)
 
-def api_pdfinfo(request:HttpRequest):
-    if request.method == 'GET':
-        fname = request.GET['filename']
-        if fname == None:
-            fname = conf.TEST_PDF_FILENAME
-        
+api_files = handler_gen(util.files.files_get)
+api_files_cachefulltxt = None
+api_file_summary = None
+api_file_refs = None
+api_file_check = None
+api_file_fulltxt = None
+
+api_folders = None
+api_folder_summary = None
+api_folder_summary_update = None
+api_folder_summary_check = None
+
+api_conf = None

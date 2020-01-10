@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpRequest, HttpResponse
 import json
 
 JSON_CONTENT_TYPE = 'application/json; charset=utf-8'
@@ -15,8 +15,21 @@ def JsonResponse(data:dict):
     resp['Access-Control-Allow-Headers'] = 'Content-Type'
     return resp
 
-def JsonResponseOK(msg=""):
-    return JsonResponse({"status": "OK", "msg": msg})
+def JsonResponseSimple(status="OK", msg=""):
+    return JsonResponse({"status": status, "msg": msg})
 
-def JsonResponseNotSupported(msg=""):
-    return JsonResponse({"status": "NOT-SUPPORTED", "msg": msg})
+def handler_gen(getfunc, postfunc=None):
+    ret_handler = def handler(request:HttpRequest):
+        result = {}
+        if request.method == 'GET':
+            params = request.GET.dict()
+            result == getfunc(params)
+        elif postfunc is not None and request.method == 'POST':
+            params = request.POST.dict()
+            result == postfunc(params)
+        if result is str:
+            return JsonResponseSimple(result)
+        else:
+            result["status"] = "OK"
+            return JsonResponse(result)
+    return ret_handler
