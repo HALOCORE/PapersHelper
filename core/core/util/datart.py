@@ -14,7 +14,7 @@ FILENAME_GETTER = {
 ROOT_PATH = "/mnt/c/Users/HP/Desktop/iotrules/papers"
 TEST_PDF_FILENAME = "/2019/ICSE2019-autotap--AutoTap Synthesizing and Repairing Trigger-Action Programs Using LTL Properties.pdf"
 
-def _full_filename(pathpart:str, finalpart:str=None):
+def full_filename(pathpart:str, finalpart:str=None):
     global ROOT_PATH
     fname = os.path.join(ROOT_PATH, pathpart)
     if finalpart is not None:
@@ -54,17 +54,17 @@ def file_tree_cache_read(foldername:str):
 
 def file_tree_cache_update(foldername:str, callroot=True):
     global _file_tree
-    fname = _full_filename(foldername)
+    fname = full_filename(foldername)
     fds = os.listdir(fname)
     files = [
         os.path.join(foldername, f)
         for f in fds
-        if os.path.isfile(_full_filename(foldername, f))]
+        if os.path.isfile(full_filename(foldername, f))]
     
     dirs = {
         os.path.join(foldername, f) : file_tree_cache_update(os.path.join(foldername, f), False) 
         for f in fds
-        if os.path.isdir(_full_filename(foldername, f))}
+        if os.path.isdir(full_filename(foldername, f))}
     
     result = {"files": files, "dirs": dirs}
     if callroot:
