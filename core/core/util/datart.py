@@ -7,12 +7,7 @@ _folder_summary_dict = {}
 _file_summary_dict = {}
 _file_refs_dict = {}
 
-FILENAME_GETTER = {
-    "summary": lambda x : x
-}
-
 ROOT_PATH = "/mnt/c/Users/HP/Desktop/iotrules/papers"
-TEST_PDF_FILENAME = "/2019/ICSE2019-autotap--AutoTap Synthesizing and Repairing Trigger-Action Programs Using LTL Properties.pdf"
 
 def full_filename(pathpart:str, finalpart:str=None):
     global ROOT_PATH
@@ -21,11 +16,22 @@ def full_filename(pathpart:str, finalpart:str=None):
         fname = os.path.join(fname, finalpart)
     return os.path.abspath(fname)
 
+FILENAME_GETTER = {
+    "file_summary": lambda x : tool.ch_file_ext(x, ".summary.json"),
+    "file_refs": lambda x : tool.ch_file_ext(x, ".refs.json"),
+    "file_fulltxt": lambda x : tool.ch_file_ext(x, ".txt"),
+    "folder_summary": lambda x : os.path.join(x, "summary.json"),
+}
+
 def file_summary_read(filename:str):
-    pass
+    fname = FILENAME_GETTER["file_summary"](filename)
+    fullname = full_filename(fname)
+    return tool.TryReadJson(fullname)
 
 def file_summary_write(filename:str, summary):
-    pass
+    fname = FILENAME_GETTER["file_summary"](filename)
+    fullname = full_filename(fname)
+    tool.WriteJson(fullname, summary)
 
 def file_refs_read(filename:str):
     pass

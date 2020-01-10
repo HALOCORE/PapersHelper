@@ -19,7 +19,7 @@ def pdf_text_get(params):
         for page in PDFPage.get_pages(fp):
             interpreter.process_page(page)
     device.close()
-    contents = outfp.getvalue()
+    contents = outfp.getvalue().replace('\ufb01', 'fi')
     outfp.close()
     return {"content": contents}
 

@@ -1,4 +1,8 @@
 _venv
+tmp.json
+tmp.txt
+tmp.md
+tmp.yml
 # Added By Bo Wang
 
 # Byte-compiled / optimized / DLL files
