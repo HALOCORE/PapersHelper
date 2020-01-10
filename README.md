@@ -1,9 +1,17 @@
 # PapersHelper
 Help with my downloaded papers in a directory.
 
+## testing
+```
+core
+python -m core.test
+```
+
 ## backend(core) API design
 所有请求会返回log字段。
 
+- /reload
+    - 更新全部
 - /files
     - get 获取文件树
         - ?q=xxx 筛选含有xxx的文件
@@ -19,8 +27,6 @@ Help with my downloaded papers in a directory.
                 - post 上传匹配信息，更新ref
         - /fulltxt
             - get 获取完整文本
-    - /cachefulltxt
-        - get 对所有文件获取fulltxt
 - /folders
     - get 获取folder列表
     - /\<foldername\>

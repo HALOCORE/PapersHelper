@@ -10,11 +10,11 @@ from . import datart
 rsrcmgr = PDFResourceManager()
 
 def pdf_text_get(params):
-    filename = params["filename"]
-    fname = datart.full_filename(filename)
+    fileid = params["fileid"]
+    fullname = datart.full_filename(fileid)
     outfp = io.StringIO()
     device = TextConverter(rsrcmgr, outfp, laparams=LAParams())
-    with open(fname, 'rb') as fp:
+    with open(fullname, 'rb') as fp:
         interpreter = PDFPageInterpreter(rsrcmgr, device)
         for page in PDFPage.get_pages(fp):
             interpreter.process_page(page)
@@ -24,5 +24,5 @@ def pdf_text_get(params):
     return {"content": contents}
 
 def pdf_meta_get(params):
-    filename = params["filename"]
+    fileid = params["fileid"]
     return {}

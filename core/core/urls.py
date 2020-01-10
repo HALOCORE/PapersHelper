@@ -19,7 +19,11 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('files', views.api_files),
-    path('files/<filename>/summary', views.api_file_summary),
+    path('reloads', views.api_reload),
+    path('filetree', views.api_filetree),
+    path('filetree/update', views.api_filetree_update),
+    path('file/summary', views.api_file_summary),
+    path('file/refs', views.api_file_refs),
+    path('file/fulltxt', views.api_file_fulltxt),
     path('test', views.api_test),
 ]

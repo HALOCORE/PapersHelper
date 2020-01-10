@@ -19,17 +19,17 @@ def JsonResponseSimple(status="OK", msg=""):
     return JsonResponse({"status": status, "msg": msg})
 
 def handler_gen(getfunc, postfunc=None):
-    ret_handler = def handler(request:HttpRequest):
+    def handler(request:HttpRequest):
         result = {}
         if request.method == 'GET':
             params = request.GET.dict()
-            result == getfunc(params)
+            result = getfunc(params)
         elif postfunc is not None and request.method == 'POST':
             params = request.POST.dict()
-            result == postfunc(params)
-        if result is str:
+            result = postfunc(params)
+        if isinstance(result, str):
             return JsonResponseSimple(result)
         else:
             result["status"] = "OK"
             return JsonResponse(result)
-    return ret_handler
+    return handler

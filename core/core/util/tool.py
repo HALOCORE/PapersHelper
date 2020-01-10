@@ -60,7 +60,7 @@ def list_map(mylist:list, func):
 def strip_elems(mylist):
     return [x.strip() for x in mylist]
 
-def TryReadJson(filename):
+def TryReadJson(filename:str):
     result = None
     print("# TryReadJson: " + filename)
     if os.path.exists(filename):
@@ -73,3 +73,17 @@ def WriteJson(filename:str, obj):
     ensure_path(os.path.dirname(filename))
     with open(filename, 'w') as f:
         json.dump(obj, f, indent=2)
+
+def TryReadTxt(filename:str):
+    result = None
+    print("# TryReadTxt: " + filename)
+    if os.path.exists(filename):
+        with open(filename) as f:
+            result = f.read()
+    return result
+
+def WriteTxt(filename:str, myStr:str):
+    print("# WriteTxt: " + filename)
+    ensure_path(os.path.dirname(filename))
+    with open(filename, 'w') as f:
+        f.write(myStr)

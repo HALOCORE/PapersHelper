@@ -1,0 +1,14 @@
+GET http://localhost:8000/filetree/update
+###
+
+GET http://localhost:8000/filetree
+###
+
+GET http://localhost:8000/reloads
+###
+
+GET http://localhost:8000/file/refs?fileid=2019/CHI2019-10bugs--How Users Interpret Bugs in Trigger-Action Programming.pdf
+###
+
+GET http://localhost:8000/file/summary?fileid=2019/CHI2019-10bugs--How Users Interpret Bugs in Trigger-Action Programming.pdf
+###
