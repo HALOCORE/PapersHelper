@@ -1,11 +1,7 @@
 import os
 
 def files_get():
-    fds = os.listdir(config.ROOT_PATH)
-    fullfds = [os.path.join(config.ROOT_PATH, f) for f in fds]
-    files = [f for f in fullfds if os.path.isfile(f)]
-    dirs = [f for f in fullfds if os.path.isdir(f)]
-    return {"files": files, "dirs": dirs}
+    pass
 
 def files_cachefulltxt_get():
     pass
