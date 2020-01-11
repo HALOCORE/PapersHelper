@@ -1,11 +1,45 @@
 # PapersHelper
 Help with my downloaded papers in a directory.
 
-## testing
+## 安装与运行
+> 所有的命令，都是从当前目录出发运行
+### 安装core后端运行环境
+我是用的是python 3.7。首先创建名为_venv的python虚拟环境:
 ```
-core
+python3.7 -m venv _venv
+```
+接着进入虚拟环境：
+```
+cd _venv
+source bin/activate
+```
+接着安装python包：
+```
+pip install -r requirements.txt
+```
+### 运行core后端
+启动django:
+```
+cd core
+python manage.py runserver
+```
+测试模块功能(不启动django):
+```
+cd core
 python -m core.test
 ```
+### 安装helperui前端运行环境
+如果没有node和npm，先通过nvm安装它们。接下来：
+```
+cd frontend/helperui
+npm install
+```
+
+### 运行helperui前端
+```
+npm start
+```
+接着访问http://localhost:3000/
 
 ## backend(core) API design
 所有请求会返回log字段。

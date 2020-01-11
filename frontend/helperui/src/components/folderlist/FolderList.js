@@ -21,7 +21,7 @@ export default class FolderList extends React.Component {
   }
 
   handleListItemClick = (event, index) => {
-    this.setSesslectedIndex(index);
+    this.setSelectedIndex(index);
     console.log(this.state);
   };
 
