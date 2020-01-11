@@ -1,0 +1,6 @@
+
+.paper-list{
+    width: calc(99% - 204px);
+    display: inline-block;
+    margin-left: 3px;
+}

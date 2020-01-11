@@ -4,6 +4,9 @@ GET http://localhost:8000/filetree/update
 GET http://localhost:8000/filetree
 ###
 
+GET http://localhost:8000/file/search
+###
+
 GET http://localhost:8000/reloads
 ###
 

@@ -39,6 +39,22 @@ def clear():
     _file_refs_dict = {}
     _file_fulltxt_dict = {}
 
+def file_search(querywords:list=None, keywords:list=None, sources:list=None, years:list=None):
+    global _file_fulltxt_dict
+    global _file_refs_dict
+    global _file_summary_dict
+    global _file_tree
+    global _folder_summary_dict
+    def file_collect_rec(d:dict):
+        if 'files' not in d: return []
+        files = list(d['files'])
+        for dname in d['dirs']:
+            files.extend(file_collect_rec(d['dirs'][dname]))
+        return files
+    files = file_collect_rec(_file_tree)
+    return files
+
+
 def file_summary_read(fileid:str):
     global _file_summary_dict
     if fileid in _file_summary_dict:

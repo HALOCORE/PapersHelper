@@ -12,6 +12,10 @@ def filetree_update(params=None):
     filetree = datart.file_tree_cache_update("")
     return {"filetree": filetree}
 
+def file_search_get(params=None):
+    files = datart.file_search()
+    return {"files": files}
+
 def file_summary_get(params):
     fileid = params['fileid']
     summary = datart.file_summary_read(fileid)
