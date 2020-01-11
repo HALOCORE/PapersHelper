@@ -6,21 +6,23 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
+import Helper from '../../utils/Helper';
 import './FolderList.css';
+
 
 export default class FolderList extends React.Component {
 
   constructor(props){
     super(props);
-    this.getSelectedIndex = () => this.state.selectedIndex;
-    this.setSelectedIndex = (idx) => this.setState({selectedIndex:idx});
+    Helper.getset(this, "selectedIndex");
     this.state = {
       selectedIndex:0
     };
   }
 
   handleListItemClick = (event, index) => {
-    this.setSelectedIndex(index);
+    this.setSesslectedIndex(index);
+    console.log(this.state);
   };
 
   render(){
